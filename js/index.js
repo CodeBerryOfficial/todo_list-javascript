@@ -25,7 +25,7 @@ const createTask = (value, onClick, onDelete) => {
     return task;
 }
 
-const onClick = () => {
+function onClick() {
     const newTaskValue = newTaskInput.value;
     if(newTaskValue.length === 0) {
         alert("Please Enter a Task")

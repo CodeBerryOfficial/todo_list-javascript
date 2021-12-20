@@ -1,37 +1,25 @@
-const push = document.querySelector("#push");
-const newTaskInput = document.querySelector("#newtask input");
 const tasks = document.querySelector("#tasks");
+const btn = document.querySelector("#add");
+const input = document.querySelector("#newtask input");
 
-push.addEventListener("click",() => {
-    if(newTaskInput.value.length == 0){
-        alert("Please Enter a Task")
-    }
-    else{
-        document.querySelector('#tasks').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtask input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
-
-        var tasks = document.querySelectorAll(".task");
-        for(var i=0; i<tasks.length; i++){
-            tasks[i].onclick = function(){
-                this.classList.toggle('completed');
-            }
-        }
-
-        document.querySelector("#newtask input").value = "";
-    }
+// event listeners
+add.addEventListener("click", () => {
+  if(input.value.length == 0) {
+    alert("Please enter a task!")
+  }
+  else {
+    addToDo();
+    input.value = "";
+  }
 })
+
+//functions
+function addToDo() {
+  const newElement = document.createElement("li");  
+  const newItem = document.createTextNode(input.value);  
+ 
+  newElement.appendChild(newItem);
+  tasks.appendChild(newElement);
+}
+
+
